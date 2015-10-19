@@ -1,0 +1,29 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/ConfigManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Common/Utils.cs" Line="13" Column="59" />
+      <File FileName="Assets/Scripts/GameLogic/Main.cs" Line="17" Column="2" />
+      <File FileName="Assets/Scripts/Manager/ConfigManager.cs" Line="12" Column="26" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="Common" expanded="True" />
+              <Node name="GameLogic" expanded="True" />
+              <Node name="Manager" expanded="True">
+                <Node name="ConfigManager.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -10,9 +10,21 @@ using System.Collections;
 
 public class Main : MonoBehaviour {
 
+	private void Init()
+	{
+		Utils.SetEnableLog( ConfigManager.Instance.IsEnableLog() );
+	}
+
+
+	void Awake()
+	{
+		Init();
+	}
+
 	// Use this for initialization
 	void Start () {
 		Utils.DBG("Hello Miss Orange!");
+		Utils.DBG(ConfigManager.Instance.GlobalFilePath);
 	}
 	
 	// Update is called once per frame

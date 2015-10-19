@@ -44,4 +44,11 @@ public static class Utils {
 		ERR(string.Format("This Vector3 is {0}",vec.ToString()));	
 	}
 	/********************** Log 的一些接口及属性 END **********************/
+
+	/********************** 对文件操作的接口 START **********************/
+	public static string LoadFile(string fileFullName)
+	{
+		return string.Empty;
+	}
+	/********************** 对文件操作的接口 END **********************/
 }

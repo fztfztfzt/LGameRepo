@@ -8,6 +8,7 @@ LastEdit:	2015.10.16
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public class ConfigManager {
 	/********************** 本类运用单例模式 基本构造START **********************/
@@ -30,28 +31,32 @@ public class ConfigManager {
 	/********************** 基本构造结束 END **********************/
 
 	/********************** 初始化项目配置 START **********************/
-	public string GlobalFilePath = string.Empty;
+    public string GlobalFilePath = string.Empty;
 
 	private void InitBasicConfig()
 	{
-		GlobalFilePath = "test";
-		if( Application.platform == RuntimePlatform.Android )
+		if( Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
 		{
 			GlobalFilePath = Application.persistentDataPath;
-		}else if( Application.platform == RuntimePlatform.WindowsPlayer )
+        }
+        else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
 		{
 			GlobalFilePath = Application.dataPath;
 		}
+        else if (Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            GlobalFilePath = Application.persistentDataPath;
+        }
 	}
 	/********************** 初始化项目配置 END **********************/
 
 	/********************** 对conf.json文件的管理 START **********************/
 	private Dictionary<string,object> mConfDic = null;
-
+    private readonly string mConfFile = "Config/conf.json";
 	private void InitConfDic()
 	{
-		mConfDic = new Dictionary<string,object>();
-		mConfDic.Add("EnableLog",true);
+        string conf = Utils.LoadFile(Path.Combine(Application.streamingAssetsPath, mConfFile));
+        mConfDic = MiniJSON.Json.Deserialize(conf) as Dictionary<string,object>;
 	}
 
 	public bool IsEnableLog()

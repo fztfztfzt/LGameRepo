@@ -8,6 +8,7 @@ LastEdit:	2015.10.17
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public static class Utils {
 	/********************** Log 的一些接口及属性 **********************/
@@ -48,7 +49,15 @@ public static class Utils {
 	/********************** 对文件操作的接口 START **********************/
 	public static string LoadFile(string fileFullName)
 	{
-		return string.Empty;
+        string result = string.Empty;
+        if ( !File.Exists(fileFullName) )
+        {
+            ERR(string.Format("{0} is not exists!",fileFullName));
+        }else
+        {
+            return File.ReadAllText(fileFullName);
+        }
+		return result;
 	}
 	/********************** 对文件操作的接口 END **********************/
 }

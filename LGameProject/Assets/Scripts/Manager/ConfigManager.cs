@@ -39,13 +39,9 @@ public class ConfigManager {
 		{
 			GlobalFilePath = Application.persistentDataPath;
         }
-        else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-		{
-			GlobalFilePath = Application.dataPath;
-		}
-        else if (Application.platform == RuntimePlatform.OSXPlayer)
+        else
         {
-            GlobalFilePath = Application.persistentDataPath;
+            GlobalFilePath = Application.dataPath;
         }
 	}
 	/********************** 初始化项目配置 END **********************/

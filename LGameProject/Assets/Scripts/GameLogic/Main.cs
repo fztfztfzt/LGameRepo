@@ -9,13 +9,20 @@ using UnityEngine;
 using System.Collections;
 
 public class Main : MonoBehaviour {
-
+	//创世之初
 	private void Init()
 	{
 		Utils.SetEnableLog( ConfigManager.Instance.IsEnableLog() );
 	}
 
+	public Actor Player = null;
 
+	private void InitPlayer()
+	{
+		Player = new Actor();
+	}
+
+	//世界开始醒来
 	void Awake()
 	{
 		Init();
@@ -25,11 +32,12 @@ public class Main : MonoBehaviour {
 	void Start () {
 		Utils.DBG("Hello Miss Orange!");
 		Utils.DBG(ConfigManager.Instance.GlobalFilePath);
+		InitPlayer();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Player.Update();
 	}
 	
 }

@@ -8,7 +8,7 @@ LastEdit:	2015.10.29
 using UnityEngine;
 using System.Collections;
 
-public class Actor {
+public class Actor : MonoBehaviour{
 
 	// Use this for initialization
 	void Start () {
@@ -21,20 +21,20 @@ public class Actor {
 	}
 	
 	// Update is called once per frame
-	public void Update () {
-		mFsm.CurrentState.Update();
+	void Update () {
+		FSM.CurrentState.Update();
 	}
 
 	/**************** 状态机管理 START *************/
 
 	//有限状态机
-	public FSM mFsm = null;
+	public FSMSystem FSM = null;
 
 	//创建有限状态机
 	private void CreateFSM()
 	{
 		FSMState firstState = new FSMState();
-		mFsm = new FSM(firstState);
+		FSM = new FSMSystem(firstState);
 	}
 	/**************** 状态机管理 END *************/
 }

@@ -19,7 +19,10 @@ public class Main : MonoBehaviour {
 
 	private void InitPlayer()
 	{
-		Player = new Actor();
+		Utils.DBG("InitPlayer Start");
+		GameObject playerObj = Instantiate( Resources.Load("Charactors/Prefab/Player") ) as GameObject;
+		playerObj.AddComponent<Actor>();
+		playerObj.transform.position = Vector3.zero;
 	}
 
 	//世界开始醒来
@@ -37,7 +40,7 @@ public class Main : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Player.Update();
+		//Player.Update();
 	}
 	
 }

@@ -8,15 +8,15 @@ LastEdit:	2015.10.29
 using UnityEngine;
 using System.Collections;
 
-public class FSM {
+public class FSMSystem {
 
 	public FSMState CurrentState { get; set; }
 
 	//状态链表
 	public ArrayList States = new ArrayList();
 
-	public FSM(FSMState curState) {
-		Utils.DBG("FSM in");
+	public FSMSystem(FSMState curState) {
+		Utils.DBG("FSMSystem Start");
 		CurrentState = curState;
 	}
 

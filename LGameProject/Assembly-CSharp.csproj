@@ -47,8 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Common\Json.cs" />
      <Compile Include="Assets\Scripts\Common\Utils.cs" />
-     <Compile Include="Assets\Scripts\FSM\FSM.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMState.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMSystem.cs" />
      <Compile Include="Assets\Scripts\GameLogic\Actor.cs" />
      <Compile Include="Assets\Scripts\GameLogic\Main.cs" />
      <Compile Include="Assets\Scripts\Manager\ConfigManager.cs" />

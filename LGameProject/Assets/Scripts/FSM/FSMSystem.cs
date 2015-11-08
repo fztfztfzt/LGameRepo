@@ -20,4 +20,19 @@ public class FSMSystem {
 		CurrentState = curState;
 	}
 
+	public void ExecuteCmd(string cmd)
+	{
+		FSMState toState = CurrentState.GetDestState(cmd);
+		if(toState == null)
+		{
+			return;
+		}
+		else
+		{
+			CurrentState.Exit();
+			CurrentState = toState;
+			CurrentState.Enter();
+		}
+	}
+
 }

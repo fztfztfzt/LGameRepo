@@ -21,7 +21,7 @@ public class Main : MonoBehaviour {
 	{
 		Utils.DBG("InitPlayer Start");
 		GameObject playerObj = Instantiate( Resources.Load("Charactors/Prefab/Player") ) as GameObject;
-		playerObj.AddComponent<Player>();
+		//playerObj.AddComponent<Player>();
 		playerObj.transform.position = Vector3.zero;
 		Player = playerObj.GetComponent<Player>();
 	}

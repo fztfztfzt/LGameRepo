@@ -47,12 +47,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Actor\Actor.cs" />
      <Compile Include="Assets\Scripts\Actor\Player.cs" />
+     <Compile Include="Assets\Scripts\Behavior\PlayerIdleState.cs" />
      <Compile Include="Assets\Scripts\Common\Json.cs" />
      <Compile Include="Assets\Scripts\Common\Utils.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMState.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMSystem.cs" />
      <Compile Include="Assets\Scripts\GameLogic\Main.cs" />
      <Compile Include="Assets\Scripts\Manager\ConfigManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\DataManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

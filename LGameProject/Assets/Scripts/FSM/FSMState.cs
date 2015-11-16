@@ -18,6 +18,10 @@ public class FSMState {
 	public string StateName { get; set; }
 
 	//构造函数
+	public FSMState()
+	{
+		
+	}
 	public FSMState(Actor owner, string stateName)
 	{
 		Owner = owner;
@@ -62,13 +66,13 @@ public class FSMState {
 	/****************** 基本状态接口 START *****************/
 	public void Init()
 	{
-
+		Utils.DBG(StateName + " Init!");
 	}
 
 	//进入状态
 	public void Enter()
 	{
-
+		Utils.DBG(StateName + " Enter!");
 	}
 
 	//执行状态
@@ -80,13 +84,13 @@ public class FSMState {
 	//给状态发消息
 	public void OnMsg(string msg)
 	{
-
+		Utils.DBG(StateName + " OnMsg msg is " + msg);
 	}
 
 	//退出状态
 	public void Exit()
 	{
-
+		Utils.DBG(StateName + " Exit!");
 	}
 	/****************** 基本状态接口 END *****************/
 

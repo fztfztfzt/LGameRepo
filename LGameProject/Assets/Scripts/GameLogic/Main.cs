@@ -15,7 +15,7 @@ public class Main : MonoBehaviour {
 		Utils.SetEnableLog( ConfigManager.Instance.IsEnableLog() );
 	}
 
-	public Player Player = null;
+	public Player PlayerComp = null;
 
 	private void InitPlayer()
 	{
@@ -23,7 +23,7 @@ public class Main : MonoBehaviour {
 		GameObject playerObj = Instantiate( Resources.Load("Charactors/Prefab/Player") ) as GameObject;
 		//playerObj.AddComponent<Player>();
 		playerObj.transform.position = Vector3.zero;
-		Player = playerObj.GetComponent<Player>();
+		PlayerComp = playerObj.GetComponent<Player>();
 	}
 
 	//世界开始醒来

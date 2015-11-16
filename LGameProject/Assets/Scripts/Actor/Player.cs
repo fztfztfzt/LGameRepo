@@ -23,7 +23,7 @@ public class Player : Actor{
 	//创建有限状态机
 	private void CreateFSM()
 	{
-		FSMState idleState = new FSMState(this, "playerIdleState");
+		FSMState idleState = new PlayerIdleState(this, "playerIdleState");
 		FSMState walkState = new FSMState(this, "playerWalkState");
 		FSMState runState = new FSMState(this, "playerRunState");
 		idleState.AddTransition("WALK",walkState);

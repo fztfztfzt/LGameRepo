@@ -9,7 +9,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class FSMState {
+public abstract class FSMState {
 
 	/***************** 状态类构造 START ****************/
 	// 该状态的所有者
@@ -22,12 +22,7 @@ public class FSMState {
 	{
 		
 	}
-	public FSMState(Actor owner, string stateName)
-	{
-		Owner = owner;
-		StateName = stateName;
-		Init();
-	}
+
 	/***************** 状态类构造 END ****************/
 
 	/****************** 状态关系处理 START *****************/
@@ -64,34 +59,20 @@ public class FSMState {
 	/****************** 状态关系处理 END *****************/
 
 	/****************** 基本状态接口 START *****************/
-	public void Init()
-	{
-		Utils.DBG(StateName + " Init!");
-	}
+    public abstract void Init();
 
 	//进入状态
-	public void Enter()
-	{
-		Utils.DBG(StateName + " Enter!");
-	}
+	public abstract void Enter();
 
 	//执行状态
-	public void Update () 
-	{
-		Utils.DBG(StateName + " is Updating!!!");
-	}
+	public abstract void Execute ();
 
 	//给状态发消息
-	public void OnMsg(string msg)
-	{
-		Utils.DBG(StateName + " OnMsg msg is " + msg);
-	}
+    public abstract void OnMsg(string msg);
 
 	//退出状态
-	public void Exit()
-	{
-		Utils.DBG(StateName + " Exit!");
-	}
+	public abstract void Exit();
+	
 	/****************** 基本状态接口 END *****************/
 
 }

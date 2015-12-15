@@ -60,4 +60,22 @@ public static class Utils {
 		return result;
 	}
 	/********************** 对文件操作的接口 END **********************/
+
+    /********************** 游戏通用功能接口 START **********************/
+    public static Main GetMain()
+    {
+        Main mainComp = null;
+        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        if (mainCamera == null)
+        {
+            ERR("There is not a game object whose tag is MainCamera");
+        }
+        else
+        {
+            mainComp = mainCamera.GetComponent<Main>();
+        }
+        return mainComp;
+    }
+    /********************** 游戏通用功能接口 END **********************/
+
 }

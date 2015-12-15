@@ -37,6 +37,7 @@ public class Main : MonoBehaviour {
 		Utils.DBG("Hello Miss Orange!");
 		Utils.DBG(ConfigManager.Instance.GlobalFilePath);
 		InitPlayer();
+        Utils.GetMain().GetMainTest();
 	}
 	
 	void Update () {
@@ -48,5 +49,10 @@ public class Main : MonoBehaviour {
 	{
 
 	}
+
+    public void GetMainTest()
+    {
+        Utils.DBG("GetMainTest");
+    }
 	
 }

@@ -3,7 +3,7 @@ FileName:   Utils.cs
 Desc: 		上帝造物需要的一些工具
 Author:		Allen Kashiwa
 CreateAt:	2015.10.16
-LastEdit:	2015.10.17
+LastEdit:	2015.12.18
 **/
 using UnityEngine;
 using System.Collections;
@@ -62,10 +62,15 @@ public static class Utils {
 	/********************** 对文件操作的接口 END **********************/
 
     /********************** 游戏通用功能接口 START **********************/
+
+    /// <summary>
+    /// 获取游戏主体
+    /// </summary>
+    /// <returns></returns>
     public static Main GetMain()
     {
         Main mainComp = null;
-        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        GameObject mainCamera = GameObject.FindGameObjectWithTag("GameMain");
         if (mainCamera == null)
         {
             ERR("There is not a game object whose tag is MainCamera");

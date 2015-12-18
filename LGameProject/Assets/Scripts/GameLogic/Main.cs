@@ -54,5 +54,10 @@ public class Main : MonoBehaviour {
     {
         Utils.DBG("GetMainTest");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 	
 }

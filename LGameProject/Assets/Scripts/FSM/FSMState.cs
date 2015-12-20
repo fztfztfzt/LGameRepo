@@ -13,7 +13,7 @@ public abstract class FSMState {
 
 	/***************** 状态类构造 START ****************/
 	// 该状态的所有者
-	public Actor Owner { get; set; }
+	public Object Owner { get; set; }
 	// 该状态的名称
 	public string StateName { get; set; }
 
@@ -22,6 +22,12 @@ public abstract class FSMState {
 	{
 		
 	}
+
+    public FSMState(Object owner, string stateName)
+    {
+        Owner = owner;
+        StateName = stateName;
+    }
 
 	/***************** 状态类构造 END ****************/
 

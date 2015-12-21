@@ -42,7 +42,7 @@ public class Main : MonoBehaviour
         GameEndState gameEndState = new GameEndState(this, "GameStartState");
         gameStartState.AddTransition("START", gamePlayState);
         gamePlayState.AddTransition("END", gameEndState);
-        mCurGameState = gameStartState;
+        mCurGameState = gamePlayState;
     }
     /***************** 游戏主体状态机相关属性及接口 END ****************/
 
@@ -50,6 +50,7 @@ public class Main : MonoBehaviour
     void Awake()
     {
         Init();
+        InitPlayer();
     }
 
     //世界开始运行

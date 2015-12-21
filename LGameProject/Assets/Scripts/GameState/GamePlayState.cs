@@ -19,6 +19,7 @@ public class GamePlayState : FSMState
     public override void Init()
     {
         Utils.DBG(string.Format("{0} Init!", StateName));
+
     }
 
     public override void Enter()

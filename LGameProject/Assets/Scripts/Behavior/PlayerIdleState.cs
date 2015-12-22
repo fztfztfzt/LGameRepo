@@ -52,7 +52,7 @@ public class PlayerIdleState : FSMState
 	}
 
 	//进入状态
-	public override void Enter()
+	public override void Enter(params object[] args)
 	{
 		Utils.DBG(StateName + " Enter!");
 		mAnimTimer = 0.0f;

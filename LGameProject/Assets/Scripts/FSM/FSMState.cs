@@ -68,7 +68,7 @@ public abstract class FSMState {
     public abstract void Init();
 
 	//进入状态
-	public abstract void Enter();
+	public abstract void Enter(params object[] args);
 
 	//执行状态
 	public abstract void Execute ();

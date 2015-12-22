@@ -10,6 +10,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+public enum InputType
+{
+    NONE = 0,
+    D_DOWN,
+    A_DOWN,
+    W_DOWN,
+    S_DOWN,
+    L_BTN_DOWN,
+    L_BTN_UP
+}
+
 public static class Utils {
 	/********************** Log 的一些接口及属性 **********************/
 	private static bool mEnableLog = false;
@@ -82,5 +93,23 @@ public static class Utils {
         return mainComp;
     }
     /********************** 游戏通用功能接口 END **********************/
+
+    /********************** 游戏通用输入操作 START **********************/
+    public static InputType GetInputType()
+    {
+        InputType type = InputType.NONE;
+        if (Input.GetKey(KeyCode.D))
+        {
+            type = InputType.D_DOWN;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            type = InputType.A_DOWN;
+        }
+        return type;
+    }
+    /********************** 游戏通用输入操作 END **********************/
+    
+
 
 }

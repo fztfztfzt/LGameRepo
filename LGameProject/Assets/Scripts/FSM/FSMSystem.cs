@@ -20,7 +20,7 @@ public class FSMSystem {
 		CurrentState = curState;
 	}
 
-	public void ExecuteCmd(string cmd)
+	public void ExecuteCmd(string cmd, params object[] args)
 	{
 		FSMState toState = CurrentState.GetDestState(cmd);
 		if(toState == null)
@@ -31,7 +31,7 @@ public class FSMSystem {
 		{
 			CurrentState.Exit();
 			CurrentState = toState;
-			CurrentState.Enter();
+            CurrentState.Enter(args);
 		}
 	}
 

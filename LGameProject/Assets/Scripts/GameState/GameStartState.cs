@@ -63,7 +63,7 @@ public class GameStartState : FSMState
         Utils.DBG(string.Format("{0} Init!", StateName));
     }
 
-    public override void Enter()
+    public override void Enter(params object[] args)
     {
         Utils.DBG(string.Format("{0} Enter!", StateName));
     }

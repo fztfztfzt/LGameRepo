@@ -17,9 +17,31 @@ public class PlayerRunState : FSMState
         Init();
     }
 
+    /****************** 动画相关 START *****************/
     private ArrayList mSpritesName = null;
     private SpriteRenderer mSpriteComp = null;
     private ArrayList mSprites = null;
+    /****************** 动画相关END *****************/
+
+    /****************** 状态信息 START *****************/
+    private Vector3 mRunDir = Vector3.zero;
+    private float mRunSpeed = 2.0f;
+    private Vector2 GetRunDirByMoveDir(MoveDir moveDir)
+    {
+        Vector2 result = Vector2.zero;
+        switch (moveDir)
+        {
+            case MoveDir.LEFT:
+                result = Vector2.left;
+                break;
+            case MoveDir.RIGHT:
+                result = Vector2.right;
+                break;
+        }
+        return result;
+    }
+    /****************** 状态信息 END *****************/
+
 
     /****************** 基本状态接口 START *****************/
     public override void Init()
@@ -50,11 +72,15 @@ public class PlayerRunState : FSMState
         }
     }
 
+
+
     //进入状态
     public override void Enter(params object[] args)
     {
         Utils.ERR(StateName + " Enter!");
         mAnimTimer = 0.0f;
+        MoveDir dir = (MoveDir)args[0];
+        mRunDir = GetRunDirByMoveDir(dir);
     }
 
     private float mAnimTimer = 0.0f;
@@ -64,6 +90,8 @@ public class PlayerRunState : FSMState
     {
         //Utils.DBG(StateName + " is Updating!!!");
         PlayIdleAnim();
+        Player player = Owner as Player;
+        player.transform.position += mRunDir * mRunSpeed * Time.deltaTime;
     }
 
     private void PlayIdleAnim()
@@ -87,9 +115,27 @@ public class PlayerRunState : FSMState
     }
 
     //给状态发消息
-    public override void OnMsg(string msg)
+    public override void OnMsg(string msg, params object[] args)
     {
+        Player player = Owner as Player;
         Utils.DBG(StateName + " OnMsg msg is " + msg);
+        if (msg.Equals("ON_RUN_DIR_CHANGE"))
+        {
+            MoveDir dir = (MoveDir)args[0];
+            mRunDir = GetRunDirByMoveDir(dir);
+        }
+        else if (msg.Equals("ON_D_KEY_DOWN"))
+        {
+            OnMsg("ON_RUN_DIR_CHANGE", MoveDir.RIGHT);
+        }
+        else if (msg.Equals("ON_A_KEY_DOWN"))
+        {
+            OnMsg("ON_RUN_DIR_CHANGE", MoveDir.LEFT);
+        }
+        else if (msg.Equals("ON_A_KEY_UP") || msg.Equals("ON_D_KEY_UP"))
+        {
+            player.FSM.ExecuteCmd("ACTION_END");
+        }
     }
 
     //退出状态

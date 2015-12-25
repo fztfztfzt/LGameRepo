@@ -74,7 +74,7 @@ public abstract class FSMState {
 	public abstract void Execute ();
 
 	//给状态发消息
-    public abstract void OnMsg(string msg);
+    public abstract void OnMsg(string msg, params object[] args);
 
 	//退出状态
 	public abstract void Exit();

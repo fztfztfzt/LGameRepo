@@ -43,11 +43,23 @@ public class GamePlayState : FSMState
         InputType type = Utils.GetInputType();
         if (type == InputType.D_DOWN)
         {
-            player.FSM.ExecuteCmd("RUN", "RIGHT");
+            player.FSM.CurrentState.OnMsg("ON_D_KEY_DOWN");
+        }
+        else if(type == InputType.A_DOWN)
+        {
+            player.FSM.CurrentState.OnMsg("ON_A_KEY_DOWN");
+        }
+        else if (type == InputType.D_UP)
+        {
+            player.FSM.CurrentState.OnMsg("ON_D_KEY_UP");
+        }
+        else if (type == InputType.A_UP)
+        {
+            player.FSM.CurrentState.OnMsg("ON_A_KEY_UP");
         }
     }
 
-    public override void OnMsg(string msg)
+    public override void OnMsg(string msg, params object[] args)
     {
         throw new System.NotImplementedException();
     }

@@ -27,7 +27,8 @@ public class Player : Actor{
 		//FSMState walkState = new FSMState(this, "playerWalkState");
         FSMState runState = new PlayerRunState(this, "playerRunState");
 		//idleState.AddTransition("WALK",walkState);
-		idleState.AddTransition("RUN", runState);
+        idleState.AddTransition("RUN", runState);
+        runState.AddTransition("ACTION_END", idleState);
 		FSM = new FSMSystem(idleState);
 	}
 	/**************** 状态机管理 END *************/

@@ -88,9 +88,18 @@ public class PlayerIdleState : FSMState
     }
 
 	//给状态发消息
-	public override void OnMsg(string msg)
+    public override void OnMsg(string msg, params object[] args)
 	{
+        Player player = Owner as Player;
 		Utils.DBG(StateName + " OnMsg msg is " + msg);
+        if (msg.Equals("ON_D_KEY_DOWN"))
+        {
+            player.FSM.ExecuteCmd("RUN", MoveDir.RIGHT);
+        }
+        else if (msg.Equals("ON_A_KEY_DOWN"))
+        {
+            player.FSM.ExecuteCmd("RUN", MoveDir.LEFT);
+        }
 	}
 
 	//退出状态

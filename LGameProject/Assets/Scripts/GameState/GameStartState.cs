@@ -77,7 +77,7 @@ public class GameStartState : FSMState
         ShowMainMenu();
     }
 
-    public override void OnMsg(string msg)
+    public override void OnMsg(string msg, params object[] args)
     {
         throw new System.NotImplementedException();
     }

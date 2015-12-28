@@ -23,13 +23,15 @@ public class Player : Actor{
 	//创建有限状态机
 	private void CreateFSM()
 	{
-		FSMState idleState = new PlayerIdleState(this, "PlayerIdleState");
-		//FSMState walkState = new FSMState(this, "playerWalkState");
+        FSMState defaultState = new PlayerDefaultState(this, "PlayerDefaultState");
+        FSMState idleState = new PlayerIdleState(this, "PlayerIdleState");
+        defaultState.AddTransition("START", idleState);
+        //FSMState walkState = new FSMState(this, "playerWalkState");
         FSMState runState = new PlayerRunState(this, "playerRunState");
 		//idleState.AddTransition("WALK",walkState);
         idleState.AddTransition("RUN", runState);
         runState.AddTransition("ACTION_END", idleState);
-		FSM = new FSMSystem(idleState);
+        FSM = new FSMSystem(defaultState);
 	}
 	/**************** 状态机管理 END *************/
 }

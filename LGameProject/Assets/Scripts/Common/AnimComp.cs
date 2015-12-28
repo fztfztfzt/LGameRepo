@@ -17,6 +17,11 @@ public class AnimComp : MonoBehaviour
     private Dictionary<string, ArrayList> mAnims = null;
     //当前正在播放的动画键
     private string mCurAnimKey = string.Empty;
+    public string CurAnimKey
+    {
+        get { return mCurAnimKey; }
+        set { mCurAnimKey = value; }
+    }
     //当前正在播放的动画帧组
     private ArrayList mCurAnims = null;
     //当前播放帧

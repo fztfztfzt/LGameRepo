@@ -78,9 +78,14 @@ public class PlayerRunState : FSMState
     public override void Enter(params object[] args)
     {
         Utils.ERR(StateName + " Enter!");
-        MoveDir dir = (MoveDir)args[0];
-        mRunDir = GetRunDirByMoveDir(dir);
         Player player = Owner as Player;
+        MoveDir dir = (MoveDir)args[0];
+        Vector3 temp = GetRunDirByMoveDir(dir);
+        if (temp != mRunDir)
+        {
+            player.Flip();
+        }
+        mRunDir = temp;
         AnimComp animComp = player.GetComponent<AnimComp>();
         if (animComp == null)
         {
@@ -104,21 +109,8 @@ public class PlayerRunState : FSMState
     public override void OnMsg(string msg, params object[] args)
     {
         Player player = Owner as Player;
-        Utils.DBG(StateName + " OnMsg msg is " + msg);
-        if (msg.Equals("ON_RUN_DIR_CHANGE"))
-        {
-            MoveDir dir = (MoveDir)args[0];
-            mRunDir = GetRunDirByMoveDir(dir);
-        }
-        else if (msg.Equals("ON_D_KEY_DOWN"))
-        {
-            OnMsg("ON_RUN_DIR_CHANGE", MoveDir.RIGHT);
-        }
-        else if (msg.Equals("ON_A_KEY_DOWN"))
-        {
-            OnMsg("ON_RUN_DIR_CHANGE", MoveDir.LEFT);
-        }
-        else if (msg.Equals("ON_A_KEY_UP") || msg.Equals("ON_D_KEY_UP"))
+        Utils.ERR(StateName + " OnMsg msg is " + msg);
+        if (msg.Equals("ON_A_KEY_UP") || msg.Equals("ON_D_KEY_UP"))
         {
             player.FSM.ExecuteCmd("ACTION_END");
         }

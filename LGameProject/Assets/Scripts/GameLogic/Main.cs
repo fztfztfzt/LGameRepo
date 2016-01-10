@@ -14,6 +14,8 @@ public class Main : MonoBehaviour
     private void Init()
     {
         Utils.SetEnableLog(ConfigManager.Instance.IsEnableLog());
+        InitPlayer();
+        InitManagers();
     }
 
     public Player PlayerComp = null;
@@ -25,6 +27,11 @@ public class Main : MonoBehaviour
         //playerObj.AddComponent<Player>();
         playerObj.transform.position = Vector3.zero;
         PlayerComp = playerObj.GetComponent<Player>();
+    }
+
+    private void InitManagers()
+    {
+        UIManager UIMgr = UIManager.Instance;
     }
 
     /***************** 游戏主体状态机相关属性及接口 START ****************/
@@ -50,7 +57,6 @@ public class Main : MonoBehaviour
     void Awake()
     {
         Init();
-        InitPlayer();
     }
 
     //世界开始运行

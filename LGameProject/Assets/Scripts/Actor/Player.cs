@@ -34,4 +34,16 @@ public class Player : Actor{
         FSM = new FSMSystem(defaultState);
 	}
 	/**************** 状态机管理 END *************/
+
+    /**************** 处理转向 START *************/
+    //是否正面向右边
+    private bool mFacingRight = true;
+    public void Flip()
+    {
+        mFacingRight = !mFacingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+    /**************** 处理转向 END *************/
 }

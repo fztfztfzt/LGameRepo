@@ -6,7 +6,6 @@ CreateAt:	2015.10.16
 LastEdit:	2015.12.18
 **/
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -83,6 +82,19 @@ public static class Utils {
         }
         return mainComp;
     }
+
+    /// <summary>
+    /// 通过文件名读取json文件中的对象
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public static Dictionary<string, object> GetJsonDicByFileName(string fileName)
+    {
+        Dictionary<string, object> mJsonDic = null;
+        string text = LoadFile(Path.Combine(Application.streamingAssetsPath, fileName));
+        mJsonDic = MiniJSON.Json.Deserialize(text) as Dictionary<string, object>;
+        return mJsonDic;
+    }
     /********************** 游戏通用功能接口 END **********************/
 
     /********************** 游戏通用输入操作 START **********************/
@@ -108,7 +120,5 @@ public static class Utils {
         return type;
     }
     /********************** 游戏通用输入操作 END **********************/
-    
-
 
 }

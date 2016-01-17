@@ -32,7 +32,7 @@ public class DataManager {
 
     /********************** 对 PlayerData/Anim.json 文件的管理 START **********************/
 	private Dictionary<string,object> mPlayerAnimDic = null;
-    private readonly string mPlayerAnimFile = "Config/PlayerData/Anim.json";
+    private readonly string mPlayerAnimFile = "Config/ActorData/ChuYunGe/Anim.json";
 	private void InitPlayerAnimDic()
 	{
         string conf = Utils.LoadFile(Path.Combine(Application.streamingAssetsPath, mPlayerAnimFile));

@@ -30,7 +30,7 @@ public class PlayerRunState : FSMState
         for (int i = 0; i < spritesName.Count; ++i)
         {
             string spriteName = spritesName[i] as string;
-            Texture2D texture = Resources.Load(string.Format("Charactors/ResReference/{0}", spriteName)) as Texture2D;
+            Texture2D texture = Resources.Load(string.Format("Charactors/ResReference/Anim/{0}", spriteName)) as Texture2D;
             Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             sprites.Add(sprite);
         }

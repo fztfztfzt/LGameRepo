@@ -23,7 +23,7 @@ public class Main : MonoBehaviour
     private void InitPlayer()
     {
         Utils.DBG("InitPlayer Start");
-        GameObject playerObj = Instantiate(Resources.Load("Charactors/Prefab/Player")) as GameObject;
+        GameObject playerObj = Instantiate(Resources.Load("Charactors/Prefab/ChuYunGe")) as GameObject;
         playerObj.transform.position = Vector3.zero;
         PlayerComp = playerObj.GetComponent<Player>();
         PlayerComp.ActorName = "楚云歌";

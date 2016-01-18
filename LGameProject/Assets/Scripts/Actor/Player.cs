@@ -30,6 +30,7 @@ public class Player : Actor{
         FSMState runState = new PlayerRunState(this, "playerRunState");
 		//idleState.AddTransition("WALK",walkState);
         idleState.AddTransition("RUN", runState);
+        runState.AddTransition("RUN", runState);
         runState.AddTransition("ACTION_END", idleState);
         FSM = new FSMSystem(defaultState);
 	}
@@ -38,6 +39,11 @@ public class Player : Actor{
     /**************** 处理转向 START *************/
     //是否正面向右边
     private bool mFacingRight = true;
+    public bool FacingRight
+    {
+        get { return mFacingRight; }
+        set { mFacingRight = value; }
+    }
     public void Flip()
     {
         mFacingRight = !mFacingRight;

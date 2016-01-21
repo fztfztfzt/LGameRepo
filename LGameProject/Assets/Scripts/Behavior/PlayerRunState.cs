@@ -17,36 +17,6 @@ public class PlayerRunState : FSMState
         Init();
     }
 
-    /****************** 动画相关 START *****************/
-    private void InitAnims()
-    {
-        ArrayList spritesName = DataManager.Instance.GetPlayerIdleSprites();
-        if (spritesName == null || spritesName.Count == 0)
-        {
-            Utils.ERR("Init Player Idle sprites failed!");
-            return;
-        }
-        ArrayList sprites = new ArrayList();
-        for (int i = 0; i < spritesName.Count; ++i)
-        {
-            string spriteName = spritesName[i] as string;
-            Texture2D texture = Resources.Load(string.Format("Charactors/ResReference/{0}", spriteName)) as Texture2D;
-            Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            sprites.Add(sprite);
-        }
-        Player player = Owner as Player;
-        AnimComp animComp = player.GetComponent<AnimComp>();
-        if (animComp == null)
-        {
-            Utils.ERR("Init Player Idle get spriteComp failed!");
-        }
-        else
-        {
-            animComp.AddAnim("RUN", sprites);
-        }
-    }
-    /****************** 动画相关END *****************/
-
     /****************** 状态信息 START *****************/
     private Vector3 mRunDir = Vector3.zero;
     private float mRunSpeed = 2.0f;
@@ -71,30 +41,24 @@ public class PlayerRunState : FSMState
     public override void Init()
     {
         Utils.DBG(StateName + " Init!");
-        InitAnims();
+        Player owner = Owner as Player;
+        animator = owner.GetComponent<Animator>();
     }
+
+    private Animator animator = null;
 
     //进入状态
     public override void Enter(params object[] args)
     {
-        Utils.ERR(StateName + " Enter!");
+        Utils.DBG(StateName + " Enter!");
         Player player = Owner as Player;
         MoveDir dir = (MoveDir)args[0];
-        Vector3 temp = GetRunDirByMoveDir(dir);
-        if (temp != mRunDir)
+        mRunDir = GetRunDirByMoveDir(dir);
+        if ((player.FacingRight && dir == MoveDir.LEFT) || (!player.FacingRight && dir == MoveDir.RIGHT))
         {
             player.Flip();
         }
-        mRunDir = temp;
-        AnimComp animComp = player.GetComponent<AnimComp>();
-        if (animComp == null)
-        {
-            Utils.ERR("Player do not have AnimComp!");
-        }
-        else
-        {
-            animComp.PlayAnimByKey("RUN");
-        }
+        animator.SetBool("Run", true);
     }
 
     //执行状态
@@ -114,12 +78,21 @@ public class PlayerRunState : FSMState
         {
             player.FSM.ExecuteCmd("ACTION_END");
         }
+        else if (msg.Equals("ON_D_KEY_DOWN"))
+        {
+            player.FSM.ExecuteCmd("RUN", MoveDir.RIGHT);
+        }
+        else if (msg.Equals("ON_A_KEY_DOWN"))
+        {
+            player.FSM.ExecuteCmd("RUN", MoveDir.LEFT);
+        }
     }
 
     //退出状态
     public override void Exit()
     {
-        Utils.DBG(StateName + " Exit!");
+        Utils.ERR(StateName + " Exit!");
+        animator.SetBool("Run", false);
     }
     /****************** 基本状态接口 END *****************/
 }

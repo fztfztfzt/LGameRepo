@@ -3,7 +3,7 @@ FileName:   Main.cs
 Desc: 		本项目的主类，这个世界的起源
 Author:		Allen Kashiwa
 CreateAt:	2015.10.16
-LastEdit:	2015.11.08
+LastEdit:	2016.01.17
 **/
 using UnityEngine;
 using System.Collections;
@@ -23,10 +23,10 @@ public class Main : MonoBehaviour
     private void InitPlayer()
     {
         Utils.DBG("InitPlayer Start");
-        GameObject playerObj = Instantiate(Resources.Load("Charactors/Prefab/Player")) as GameObject;
-        //playerObj.AddComponent<Player>();
+        GameObject playerObj = Instantiate(Resources.Load("Charactors/Prefab/ChuYunGe")) as GameObject;
         playerObj.transform.position = Vector3.zero;
         PlayerComp = playerObj.GetComponent<Player>();
+        PlayerComp.ActorName = "楚云歌";
     }
 
     private void InitManagers()

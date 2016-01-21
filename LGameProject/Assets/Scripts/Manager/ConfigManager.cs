@@ -46,18 +46,22 @@ public class ConfigManager {
 	}
 	/********************** 初始化项目配置 END **********************/
 
-	/********************** 对conf.json文件的管理 START **********************/
+	/********************** 对Conf.json文件的管理 START **********************/
 	private Dictionary<string,object> mConfDic = null;
-    private readonly string mConfFile = "Config/conf.json";
+    private readonly string mConfFile = "Config/Conf.json";
 	private void InitConfDic()
 	{
-        string conf = Utils.LoadFile(Path.Combine(Application.streamingAssetsPath, mConfFile));
-        mConfDic = MiniJSON.Json.Deserialize(conf) as Dictionary<string,object>;
+        mConfDic = Utils.GetJsonDicByFileName(mConfFile);
+        if (mConfDic == null)
+        {
+            Utils.ERR("InitConfDic failed!!!");
+        }
 	}
 
 	public bool IsEnableLog()
 	{
 		return bool.Parse( mConfDic["EnableLog"].ToString() );
 	}
-	/********************** 对conf.json文件的管理 END **********************/
+	/********************** 对Conf.json文件的管理 END **********************/
+
 }

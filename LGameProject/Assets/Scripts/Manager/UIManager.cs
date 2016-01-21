@@ -31,6 +31,7 @@ public class UIManager
     {
         InitUIRoot();
         InitMainMenu();
+        LoadDialogUI();
     }
 
     /********************** 基本构造结束 END **********************/
@@ -59,4 +60,15 @@ public class UIManager
 
     /********************** 基本UI节点获取 END **********************/
 
+    /********************** 加载对话框UI START **********************/
+    private void LoadDialogUI()
+    {
+        string UIConfFile = "Config/UIData/Dialog.json";
+        Dictionary<string, object> dialogUIDic = Utils.GetJsonDicByFileName(UIConfFile);
+        string resName = dialogUIDic["res"].ToString();
+        Object dialogObj = Resources.Load(resName) as Object;
+        GameObject realObj = GameObject.Instantiate(dialogObj) as GameObject;
+        realObj.transform.parent = mUIRootObj.transform;
+    }
+    /********************** 加载对话框UI START **********************/
 }

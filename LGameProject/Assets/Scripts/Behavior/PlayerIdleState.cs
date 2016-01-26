@@ -3,7 +3,7 @@ FileName:   PlayerIdleState.cs
 Desc: 		主角idle状态类
 Author:		Allen Kashiwa
 CreateAt:	2015.11.16
-LastEdit:	2015.12.28
+LastEdit:	2016.01.27
 **/
 using UnityEngine;
 using System.Collections;
@@ -41,13 +41,17 @@ public class PlayerIdleState : FSMState
 	{
         Player player = Owner as Player;
 		Utils.DBG(StateName + " OnMsg msg is " + msg);
-        if (msg.Equals("ON_D_KEY_DOWN"))
+        //if (msg.Equals("ON_D_KEY_DOWN"))
+        //{
+        //    player.FSM.ExecuteCmd("RUN", MoveDir.RIGHT);
+        //}
+        //else if (msg.Equals("ON_A_KEY_DOWN"))
+        //{
+        //    player.FSM.ExecuteCmd("RUN", MoveDir.LEFT);
+        //}
+        if(msg.Equals("ON_MOVE"))
         {
-            player.FSM.ExecuteCmd("RUN", MoveDir.RIGHT);
-        }
-        else if (msg.Equals("ON_A_KEY_DOWN"))
-        {
-            player.FSM.ExecuteCmd("RUN", MoveDir.LEFT);
+            player.FSM.ExecuteCmd("RUN", args);
         }
 	}
 

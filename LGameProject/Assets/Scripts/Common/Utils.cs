@@ -119,6 +119,12 @@ public static class Utils {
         }
         return type;
     }
+    public static float GetMoveInfo()
+    {
+        float speed = 0.0f;
+        speed = Input.GetAxis("Horizontal");
+        return speed;
+    }
     /********************** 游戏通用输入操作 END **********************/
 
 }

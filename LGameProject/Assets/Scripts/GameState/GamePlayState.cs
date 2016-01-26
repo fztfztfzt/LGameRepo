@@ -3,7 +3,7 @@ FileName:   GamePlayState.cs
 Desc: 		游戏操作状态，响应玩家操作
 Author:		Allen Kashiwa
 CreateAt:	2015.12.20
-LastEdit:	2015.12.20
+LastEdit:	2016.01.27
 **/
 using UnityEngine;
 using System.Collections;
@@ -40,6 +40,7 @@ public class GamePlayState : FSMState
 
     private void ActionManage()
     {
+        //处理技能按键操纵
         InputType type = Utils.GetInputType();
         if (type == InputType.D_DOWN)
         {
@@ -56,6 +57,16 @@ public class GamePlayState : FSMState
         else if (type == InputType.A_UP)
         {
             player.FSM.CurrentState.OnMsg("ON_A_KEY_UP");
+        }
+        //移动操作
+        float speedFactor = Utils.GetMoveInfo();
+        if (speedFactor != 0.0f)
+        {
+            player.FSM.CurrentState.OnMsg("ON_MOVE", speedFactor);
+        }
+        else
+        {
+            player.FSM.CurrentState.OnMsg("ON_STOP_MOVE");
         }
     }
 

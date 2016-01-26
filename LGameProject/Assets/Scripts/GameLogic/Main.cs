@@ -3,7 +3,7 @@ FileName:   Main.cs
 Desc: 		本项目的主类，这个世界的起源
 Author:		Allen Kashiwa
 CreateAt:	2015.10.16
-LastEdit:	2016.01.17
+LastEdit:	2016.01.26
 **/
 using UnityEngine;
 using System.Collections;
@@ -18,15 +18,42 @@ public class Main : MonoBehaviour
         InitManagers();
     }
 
-    public Player PlayerComp = null;
+    //玩家操纵的主角，玩家同一时间只能操纵一个主角，主角可能更换
+    private Player mMainPlayer = null;
+
+    /// <summary>
+    /// 改变操纵角色
+    /// </summary>
+    /// <param name="player"></param>
+    public void ChangeMainPlayer(Player player)
+    {
+        if(player == null)
+        {
+            Utils.ERR("Main ChangeMainPlayer the player you want to change is null");
+        }
+        mMainPlayer = player;
+    }
+
+    public Player GetMainPlayer()
+    {
+        if (mMainPlayer == null)
+        {
+            Utils.ERR("Main GetMainPlayer main player is null. You maybe have not init one");
+            return null;
+        }
+        return mMainPlayer;
+    }
 
     private void InitPlayer()
     {
         Utils.DBG("InitPlayer Start");
         GameObject playerObj = Instantiate(Resources.Load("Charactors/Prefab/ChuYunGe")) as GameObject;
         playerObj.transform.position = Vector3.zero;
-        PlayerComp = playerObj.GetComponent<Player>();
-        PlayerComp.ActorName = "楚云歌";
+        Player playerComp = playerObj.GetComponent<Player>();
+        playerComp.ActorName = "楚云歌";
+        ActorManager.Instance.AddActor(playerComp);
+        //默认主角
+        ChangeMainPlayer(playerComp);
     }
 
     private void InitManagers()

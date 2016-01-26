@@ -20,7 +20,7 @@ public class GamePlayState : FSMState
     public override void Init()
     {
         Utils.DBG(string.Format("{0} Init!", StateName));
-        Player mainPlayer = Utils.GetMain().PlayerComp;
+        Player mainPlayer = Utils.GetMain().GetMainPlayer();
         if (mainPlayer != null)
         {
             player = mainPlayer;

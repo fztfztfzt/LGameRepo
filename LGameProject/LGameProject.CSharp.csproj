@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\GameState\GameEndState.cs" />
     <Compile Include="Assets\Scripts\GameState\GamePlayState.cs" />
     <Compile Include="Assets\Scripts\GameState\GameStartState.cs" />
+    <Compile Include="Assets\Scripts\Manager\ActorManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ConfigManager.cs" />
     <Compile Include="Assets\Scripts\Manager\DataManager.cs" />
     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />

@@ -51,29 +51,11 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
@@ -88,24 +70,26 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Actor\Actor.cs" />
     <Compile Include="Assets\Scripts\Actor\Player.cs" />
+    <Compile Include="Assets\Scripts\Behavior\PlayerAttackState.cs" />
     <Compile Include="Assets\Scripts\Behavior\PlayerDefaultState.cs" />
     <Compile Include="Assets\Scripts\Behavior\PlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\Behavior\PlayerRunState.cs" />
     <Compile Include="Assets\Scripts\Common\AnimComp.cs" />
+    <Compile Include="Assets\Scripts\Common\AnimEvent.cs" />
     <Compile Include="Assets\Scripts\Common\CommonEnum.cs" />
     <Compile Include="Assets\Scripts\Common\GameInfoTool.cs" />
+    <Compile Include="Assets\Scripts\Common\Manager\ActorManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Manager\ConfigManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Manager\DataManager.cs" />
+    <Compile Include="Assets\Scripts\Common\Manager\UIManager.cs" />
     <Compile Include="Assets\Scripts\Common\ThirdLib\Json.cs" />
     <Compile Include="Assets\Scripts\Common\Utils.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMState.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMSystem.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\GameState\GameEndState.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\GameState\GamePlayState.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\GameState\GameStartState.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Main.cs" />
-    <Compile Include="Assets\Scripts\GameState\GameEndState.cs" />
-    <Compile Include="Assets\Scripts\GameState\GamePlayState.cs" />
-    <Compile Include="Assets\Scripts\GameState\GameStartState.cs" />
-    <Compile Include="Assets\Scripts\Manager\ActorManager.cs" />
-    <Compile Include="Assets\Scripts\Manager\ConfigManager.cs" />
-    <Compile Include="Assets\Scripts\Manager\DataManager.cs" />
-    <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
     <Compile Include="Assets\Scripts\UILogic\DialogUI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />

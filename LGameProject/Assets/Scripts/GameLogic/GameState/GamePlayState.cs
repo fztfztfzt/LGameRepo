@@ -3,7 +3,7 @@ FileName:   GamePlayState.cs
 Desc: 		游戏操作状态，响应玩家操作
 Author:		Allen Kashiwa
 CreateAt:	2015.12.20
-LastEdit:	2016.01.27
+LastEdit:	2016.01.28
 **/
 using UnityEngine;
 using System.Collections;
@@ -34,7 +34,7 @@ public class GamePlayState : FSMState
 
     public override void Execute()
     {
-        Utils.DBG(string.Format("{0} Execute!", StateName));
+        //Utils.DBG(string.Format("{0} Execute!", StateName));
         ActionManage();
     }
 
@@ -42,21 +42,21 @@ public class GamePlayState : FSMState
     {
         //处理技能按键操纵
         InputType type = Utils.GetInputType();
-        if (type == InputType.D_DOWN)
+        if (type == InputType.Z_DOWN)
         {
-            player.FSM.CurrentState.OnMsg("ON_D_KEY_DOWN");
+            player.FSM.CurrentState.OnMsg("ON_Z_KEY_DOWN");
         }
-        else if(type == InputType.A_DOWN)
+        else if(type == InputType.X_DOWN)
         {
-            player.FSM.CurrentState.OnMsg("ON_A_KEY_DOWN");
+            player.FSM.CurrentState.OnMsg("ON_X_KEY_DOWN");
         }
-        else if (type == InputType.D_UP)
+        else if (type == InputType.C_DOWN)
         {
-            player.FSM.CurrentState.OnMsg("ON_D_KEY_UP");
+            player.FSM.CurrentState.OnMsg("ON_C_KEY_DOWN");
         }
-        else if (type == InputType.A_UP)
+        else if (type == InputType.V_DOWN)
         {
-            player.FSM.CurrentState.OnMsg("ON_A_KEY_UP");
+            player.FSM.CurrentState.OnMsg("ON_V_KEY_DOWN");
         }
         //移动操作
         float speedFactor = Utils.GetMoveInfo();

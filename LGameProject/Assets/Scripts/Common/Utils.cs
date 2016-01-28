@@ -3,7 +3,7 @@ FileName:   Utils.cs
 Desc: 		上帝造物需要的一些工具
 Author:		Allen Kashiwa
 CreateAt:	2015.10.16
-LastEdit:	2015.12.18
+LastEdit:	2016.01.28
 **/
 using UnityEngine;
 using System.Collections.Generic;
@@ -101,21 +101,21 @@ public static class Utils {
     public static InputType GetInputType()
     {
         InputType type = InputType.NONE;
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            type = InputType.D_DOWN;
+            type = InputType.Z_DOWN;
         }
-        else if (Input.GetKeyUp(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.X))
         {
-            type = InputType.D_UP;
+            type = InputType.X_DOWN;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.C))
         {
-            type = InputType.A_DOWN;
+            type = InputType.C_DOWN;
         }
-        else if (Input.GetKeyUp(KeyCode.A))
+        else if (Input.GetKeyUp(KeyCode.V))
         {
-            type = InputType.A_UP;
+            type = InputType.V_DOWN;
         }
         return type;
     }
